@@ -22,7 +22,7 @@ public class LZClient: NSObject {
 	}
 	
 	// 实时获取数据
-	static func realTimeClient() -> LZClient {
+	static var realTime:LZClient {
 		let config = URLSessionConfiguration.ephemeral
 		config.timeoutIntervalForRequest = QueryTimeOut
 		config.timeoutIntervalForResource = QueryTimeOut
@@ -30,13 +30,13 @@ public class LZClient: NSObject {
 		return LZClient(session: session)
 	}
 	
-	static func cacheClient() -> LZClient {
+	static var cache:LZClient {
 		let config = URLSessionConfiguration.default
 		let session = URLSession(configuration: config, delegate: nil, delegateQueue: OperationQueue())
 		return LZClient(session: session)
 	}
 	
-	static func staticCacheClient() -> LZClient {
+	static var staticCache:LZClient {
 		let config = URLSessionConfiguration.default
 		let session = URLSession(configuration: config, delegate: nil, delegateQueue: OperationQueue())
 		let client = LZClient(session: session)
