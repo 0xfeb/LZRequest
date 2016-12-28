@@ -25,11 +25,24 @@ public enum DataParts{
 	case dictionary(code:Int, error:String?, data:[AnyHashable:Any])
 }
 
+public extension DataParts {
+	public var dict:(Int, String?, [AnyHashable:Any]?) {
+		switch self {
+		case let .empty(code, error):
+			return (code, error, nil)
+		case let .dictionary(code, error, data):
+			return (code, error, data)
+		default:
+			return (-1, nil, nil)
+		}
+	}
+}
+
 public extension LZRequest {
 	// 缺省数据结构块
 	static var dataParts:(code:String, error:String, data:String) = ("code", "error", "data")
 	
-	func parts(_ response:@escaping (DataParts?)->Void) {
+	public func parts(_ response:@escaping (DataParts?)->Void) {
 		dictionary { (dict) in
 			if let dict = dict {
 				if let code = dict[LZRequest.dataParts.code] as? Int {

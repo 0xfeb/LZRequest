@@ -7,24 +7,14 @@
 //
 
 import Foundation
+import Coastline
 
 public extension String {
 	static func mixParameters(_ params:[String:Any]) -> String {
-		return params.reduce("") { $0+$1.0+"="+"\($1.1)".urlString()+"&" }
+		return params.reduce("") { $0+$1.0+"="+"\($1.1)".urlString!+"&" }
 	}
 	
 	func genUrl(_ params:[String:String]) -> String {
-		return params.reduce(self+"?") { $0+$1.0+"="+$1.1.urlString()+"&" }
-	}
-	
-	
-	func urlString() -> String {
-		return (self as NSString).addingPercentEscapes(using: String.Encoding.utf8.rawValue)!
-	}
-	
-	var url:URL? {
-		get {
-			return URL(string: self.urlString())
-		}
+		return params.reduce(self+"?") { $0+$1.0+"="+$1.1.urlString!+"&" }
 	}
 }

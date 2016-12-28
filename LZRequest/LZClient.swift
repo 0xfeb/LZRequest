@@ -9,8 +9,8 @@
 import Foundation
 
 public class LZClient: NSObject {
-	static var baseURL = ""
-	static var shareHeaders:[String:String] = [:]
+	public static var baseURL = ""
+	public static var shareHeaders:[String:String] = [:]
 	
 	static let QueryTimeOut = 10.0
 	
@@ -22,7 +22,7 @@ public class LZClient: NSObject {
 	}
 	
 	// 实时获取数据
-	static var realTime:LZClient {
+	public static var realTime:LZClient {
 		let config = URLSessionConfiguration.ephemeral
 		config.timeoutIntervalForRequest = QueryTimeOut
 		config.timeoutIntervalForResource = QueryTimeOut
@@ -30,13 +30,13 @@ public class LZClient: NSObject {
 		return LZClient(session: session)
 	}
 	
-	static var cache:LZClient {
+	public static var cache:LZClient {
 		let config = URLSessionConfiguration.default
 		let session = URLSession(configuration: config, delegate: nil, delegateQueue: OperationQueue())
 		return LZClient(session: session)
 	}
 	
-	static var staticCache:LZClient {
+	public static var staticCache:LZClient {
 		let config = URLSessionConfiguration.default
 		let session = URLSession(configuration: config, delegate: nil, delegateQueue: OperationQueue())
 		let client = LZClient(session: session)
@@ -72,38 +72,38 @@ public extension LZClient {
 		return LZClient.baseURL + urlGap + url
 	}
 	
-	func GET(_ url:String, type:URLSession.ContentType = .form) -> LZRequest? {
-		let query = URLSession.Query(method: .GET, parameters: nil, url: url, contentType: type, isStaticMode: isStaticMode)
+	public func GET(_ url:String, type:URLSession.ContentType = .form) -> LZRequest? {
+		let query = URLSession.Query(method: .GET, parameters: nil, url: URL(url: url), contentType: type, isStaticMode: isStaticMode)
 		let headers = LZClient.buildHeader(type: type)
 		return session.buildQuery(headers: headers, query: query)
 	}
 	
-	func POST(_ url:String, _ parameters:[String:Any]?, type:URLSession.ContentType = .form) -> LZRequest? {
-		let query = URLSession.Query(method: .POST, parameters: parameters, url: url, contentType: type, isStaticMode: isStaticMode)
+	public func POST(_ url:String, _ parameters:[String:Any]?, type:URLSession.ContentType = .form) -> LZRequest? {
+		let query = URLSession.Query(method: .POST, parameters: parameters, url: URL(url: url), contentType: type, isStaticMode: isStaticMode)
 		let headers = LZClient.buildHeader(type: type)
 		return session.buildQuery(headers: headers, query: query)
 	}
 	
-	func DELETE(_ url:String, _ parameters:[String:Any]?, type:URLSession.ContentType = .form) -> LZRequest? {
-		let query = URLSession.Query(method: .POST, parameters: parameters, url: url, contentType: type, isStaticMode: isStaticMode)
+	public func DELETE(_ url:String, _ parameters:[String:Any]?, type:URLSession.ContentType = .form) -> LZRequest? {
+		let query = URLSession.Query(method: .POST, parameters: parameters, url: URL(url: url), contentType: type, isStaticMode: isStaticMode)
 		let headers = LZClient.buildHeader(type: type)
 		return session.buildQuery(headers: headers, query: query)
 	}
 	
-	func PUT(_ url:String, _ parameters:[String:Any]?, type:URLSession.ContentType = .form) -> LZRequest? {
-		let query = URLSession.Query(method: .POST, parameters: parameters, url: url, contentType: type, isStaticMode: isStaticMode)
+	public func PUT(_ url:String, _ parameters:[String:Any]?, type:URLSession.ContentType = .form) -> LZRequest? {
+		let query = URLSession.Query(method: .POST, parameters: parameters, url: URL(url: url), contentType: type, isStaticMode: isStaticMode)
 		let headers = LZClient.buildHeader(type: type)
 		return session.buildQuery(headers: headers, query: query)
 	}
 	
-	func PATCH(_ url:String, _ parameters:[String:Any]?, type:URLSession.ContentType = .form) -> LZRequest? {
-		let query = URLSession.Query(method: .POST, parameters: parameters, url: url, contentType: type, isStaticMode: isStaticMode)
+	public func PATCH(_ url:String, _ parameters:[String:Any]?, type:URLSession.ContentType = .form) -> LZRequest? {
+		let query = URLSession.Query(method: .POST, parameters: parameters, url: URL(url: url), contentType: type, isStaticMode: isStaticMode)
 		let headers = LZClient.buildHeader(type: type)
 		return session.buildQuery(headers: headers, query: query)
 	}
 	
-	func OPTION(_ url:String, _ parameters:[String:Any]?, type:URLSession.ContentType = .form) -> LZRequest? {
-		let query = URLSession.Query(method: .POST, parameters: parameters, url: url, contentType: type, isStaticMode: isStaticMode)
+	public func OPTION(_ url:String, _ parameters:[String:Any]?, type:URLSession.ContentType = .form) -> LZRequest? {
+		let query = URLSession.Query(method: .POST, parameters: parameters, url: URL(url: url), contentType: type, isStaticMode: isStaticMode)
 		let headers = LZClient.buildHeader(type: type)
 		return session.buildQuery(headers: headers, query: query)
 	}

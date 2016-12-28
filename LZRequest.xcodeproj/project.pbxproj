@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C1B4BD01E13F72800CF76C8 /* Coastline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C1B4BCF1E13F72800CF76C8 /* Coastline.framework */; };
 		6C3521681DB9C555008FCBC3 /* LZRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C3521661DB9C555008FCBC3 /* LZRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6C35216F1DB9C5B8008FCBC3 /* Session+Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C35216E1DB9C5B8008FCBC3 /* Session+Request.swift */; };
 		6C3521711DB9C628008FCBC3 /* LZRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3521701DB9C628008FCBC3 /* LZRequest.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6C1B4BCF1E13F72800CF76C8 /* Coastline.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Coastline.framework; path = "../../../../Users/wangyuanou/Library/Developer/Xcode/DerivedData/VPNGo-hgahlguwyayxxoajxlpvvnhoaeyu/Build/Products/Debug-iphoneos/Coastline.framework"; sourceTree = "<group>"; };
 		6C3521631DB9C554008FCBC3 /* LZRequest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LZRequest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C3521661DB9C555008FCBC3 /* LZRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZRequest.h; sourceTree = "<group>"; };
 		6C3521671DB9C555008FCBC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -37,17 +39,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C1B4BD01E13F72800CF76C8 /* Coastline.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6C1B4BCE1E13F72700CF76C8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6C1B4BCF1E13F72800CF76C8 /* Coastline.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		6C3521591DB9C554008FCBC3 = {
 			isa = PBXGroup;
 			children = (
 				6C3521651DB9C554008FCBC3 /* LZRequest */,
 				6C3521641DB9C554008FCBC3 /* Products */,
+				6C1B4BCE1E13F72700CF76C8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -114,7 +126,7 @@
 		6C35215A1DB9C554008FCBC3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "王渊鸥";
 				TargetAttributes = {
 					6C3521621DB9C554008FCBC3 = {
@@ -189,6 +201,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -242,6 +255,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -282,6 +296,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = LZRequest/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lez.lzrequest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -303,6 +318,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = LZRequest/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lez.lzrequest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -330,6 +346,7 @@
 				6C35216D1DB9C555008FCBC3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
