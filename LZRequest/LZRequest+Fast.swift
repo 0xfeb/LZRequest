@@ -70,12 +70,25 @@ public extension LZRequest {
 		}
 	}
 	
-	public func cacheParts(key:String, repsonse:@escaping ([AnyHashable:Any]?)->Void) -> DualFetchDict {
-		
-		return DualFetchDict(key: key, rFetcher: { (resp:@escaping ([AnyHashable : Any]?) -> Void) in
+	public func cacheParts(key:String, repsonse:@escaping ([AnyHashable:Any]?)->Void) -> DualFetchStr {
+		let dfd = DualFetchStr(jsonKey: key) { (resp: @escaping (String?) -> Void) in
 			self.parts({ (parts) in
-				resp(parts?.dict.2)
+				guard let dict = parts?.dict.2 else { return }
+				
+				if let json = try? JSONSerialization.data(withJSONObject: dict, options: JSONSerialization.WritingOptions()).string {
+					resp(json)
+				}
 			})
-		})
+		}
+		
+		dfd.run { (type, value) in
+			if let json = value?.json as? [AnyHashable:Any] {
+				repsonse(json)
+			} else {
+				repsonse(nil)
+			}
+		}
+		
+		return dfd
 	}
 }

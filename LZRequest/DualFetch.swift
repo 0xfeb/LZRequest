@@ -86,4 +86,16 @@ public class DualFetchDict : DualFetch<[AnyHashable:Any]> {
 	}
 }
 
+public class DualFetchStr : DualFetch<String> {
+	public init(jsonKey key:String, rFetcher:@escaping (@escaping(String?)->Void)->Void) {
+		super.init(lFetcher: { (fetchResult) in
+			fetchResult(UserDefaults.standard.string(forKey: key))
+		}, rFetcher: rFetcher) { (str) in
+			let ud = UserDefaults.standard
+			ud.set(str, forKey: key)
+			ud.synchronize()
+		}
+	}
+}
+
 
