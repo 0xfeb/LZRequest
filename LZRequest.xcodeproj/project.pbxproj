@@ -17,6 +17,7 @@
 		6C3521791DB9E2B3008FCBC3 /* LZData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3521781DB9E2B3008FCBC3 /* LZData.swift */; };
 		6C35217B1DB9E2D7008FCBC3 /* Data+Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C35217A1DB9E2D7008FCBC3 /* Data+Request.swift */; };
 		6C35217D1DB9E423008FCBC3 /* LZClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C35217C1DB9E423008FCBC3 /* LZClient.swift */; };
+		6C7958641E35F317002BEB9C /* DualFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7958631E35F317002BEB9C /* DualFetch.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		6C3521781DB9E2B3008FCBC3 /* LZData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LZData.swift; sourceTree = "<group>"; };
 		6C35217A1DB9E2D7008FCBC3 /* Data+Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Request.swift"; sourceTree = "<group>"; };
 		6C35217C1DB9E423008FCBC3 /* LZClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LZClient.swift; sourceTree = "<group>"; };
+		6C7958631E35F317002BEB9C /* DualFetch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DualFetch.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 		6C3521651DB9C554008FCBC3 /* LZRequest */ = {
 			isa = PBXGroup;
 			children = (
+				6C7958631E35F317002BEB9C /* DualFetch.swift */,
 				6C3521661DB9C555008FCBC3 /* LZRequest.h */,
 				6C3521671DB9C555008FCBC3 /* Info.plist */,
 				6C35216E1DB9C5B8008FCBC3 /* Session+Request.swift */,
@@ -177,6 +180,7 @@
 				6C3521711DB9C628008FCBC3 /* LZRequest.swift in Sources */,
 				6C35217D1DB9E423008FCBC3 /* LZClient.swift in Sources */,
 				6C3521751DB9CA02008FCBC3 /* LZRequest+Fast.swift in Sources */,
+				6C7958641E35F317002BEB9C /* DualFetch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

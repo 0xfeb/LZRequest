@@ -69,4 +69,13 @@ public extension LZRequest {
 			}
 		}
 	}
+	
+	public func cacheParts(key:String, repsonse:@escaping ([AnyHashable:Any]?)->Void) -> DualFetchDict {
+		
+		return DualFetchDict(key: key, rFetcher: { (resp:@escaping ([AnyHashable : Any]?) -> Void) in
+			self.parts({ (parts) in
+				resp(parts?.dict.2)
+			})
+		})
+	}
 }
