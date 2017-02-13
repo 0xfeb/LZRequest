@@ -71,7 +71,7 @@ public extension LZRequest {
 	}
 	
 	public func cacheParts(key:String, repsonse:@escaping ([AnyHashable:Any]?)->Void) -> DualFetchStr {
-		let dfd = DualFetchStr(jsonKey: key) { (resp: @escaping (String?) -> Void) in
+		let dfd = DualFetchStr(userDefaults: key) { (resp: @escaping (String?) -> Void) in
 			self.parts({ (parts) in
 				guard let dict = parts?.dict.2 else { return }
 				
