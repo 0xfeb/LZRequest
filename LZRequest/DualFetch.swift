@@ -70,7 +70,7 @@ public class DualFetch<T> {
 }
 
 public class DualFetchDict : DualFetch<[AnyHashable:Any]> {
-	public init(key:String, rFetcher:@escaping (@escaping ([AnyHashable:Any]?)->Void)->Void) {
+	public init(userDefaults key:String, rFetcher:@escaping (@escaping ([AnyHashable:Any]?)->Void)->Void) {
 		super.init(lFetcher: { (fetchResult) in
 			let ud = UserDefaults.standard
 			if let dict = ud.dictionary(forKey: key) {
@@ -84,16 +84,37 @@ public class DualFetchDict : DualFetch<[AnyHashable:Any]> {
 			ud.synchronize()
 		}
 	}
+	
+	public init(fileCache key:String, rFetcher:@escaping (@escaping ([AnyHashable:Any]?)->Void)->Void) {
+		super.init(lFetcher: { (fetchResult) in
+			let file = String.libraryPath+"/cache/dict/"+key
+			let dict = NSDictionary(contentsOfFile: file)
+			fetchResult(dict as! [AnyHashable : Any]?)
+		}, rFetcher: rFetcher) { (dict) in
+			let file = String.libraryPath+"/cache/dict/"+key
+			(dict as NSDictionary).write(toFile: file, atomically: true)
+		}
+	}
 }
 
 public class DualFetchStr : DualFetch<String> {
-	public init(jsonKey key:String, rFetcher:@escaping (@escaping(String?)->Void)->Void) {
+	public init(userDefaults key:String, rFetcher:@escaping (@escaping(String?)->Void)->Void) {
 		super.init(lFetcher: { (fetchResult) in
 			fetchResult(UserDefaults.standard.string(forKey: key))
 		}, rFetcher: rFetcher) { (str) in
 			let ud = UserDefaults.standard
 			ud.set(str, forKey: key)
 			ud.synchronize()
+		}
+	}
+	
+	public init(fileCache key:String, rFetcher:@escaping (@escaping(String?)->Void)->Void) {
+		super.init(lFetcher: { (fetchResult) in
+			let file = String.libraryPath+"/cache/str/"+key
+			fetchResult(try? String(contentsOfFile: file, encoding: String.Encoding.utf8))
+		}, rFetcher: rFetcher) { (str) in
+			let file = String.libraryPath+"/cache/str/"+key
+			try? str.write(toFile: file, atomically: true, encoding: String.Encoding.utf8)
 		}
 	}
 }
