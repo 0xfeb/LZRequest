@@ -88,8 +88,9 @@ public class DualFetchDict : DualFetch<[AnyHashable:Any]> {
 	public init(fileCache key:String, rFetcher:@escaping (@escaping ([AnyHashable:Any]?)->Void)->Void) {
 		super.init(lFetcher: { (fetchResult) in
 			let file = String.libraryPath+"/cache/dict/"+key
-			let dict = NSDictionary(contentsOfFile: file)
-			fetchResult(dict as! [AnyHashable : Any]?)
+			if let dict = NSDictionary(contentsOfFile: file) as? [AnyHashable : Any]? {
+				fetchResult(dict)
+			}
 		}, rFetcher: rFetcher) { (dict) in
 			let file = String.libraryPath+"/cache/dict/"+key
 			(dict as NSDictionary).write(toFile: file, atomically: true)

@@ -28,7 +28,9 @@ extension NSMutableData {
 			+ "\nContent-Disposition:form-data;name=\"\(key)\"\n"
 			+ "\n\(value)"
 		
-		self.append((leadString as NSString).data(using: String.Encoding.utf8.rawValue)!)
+		if let data = (leadString as NSString).data(using: String.Encoding.utf8.rawValue) {
+			self.append(data)
+		}
 	}
 	
 	func set(_ file:String, data:Data, boundry:String) {
@@ -37,13 +39,16 @@ extension NSMutableData {
 			+ "\nContent-Type:application/octet-stream"
 			+ "\nContent-Transfer-Encoding:binary\n\n"
 		
-		self.append((leadString as NSString).data(using: String.Encoding.utf8.rawValue)!)
-		self.append(data)
+		if let data = (leadString as NSString).data(using: String.Encoding.utf8.rawValue) {
+			self.append(data)
+		}
 	}
 	
 	func closeBoundry(_ boundry:String) {
 		let endString = "\n--\(boundry)--"
-		self.append((endString as NSString).data(using: String.Encoding.utf8.rawValue)!)
+		if let data = (endString as NSString).data(using: String.Encoding.utf8.rawValue) {
+			self.append(data)
+		}
 	}
 }
 

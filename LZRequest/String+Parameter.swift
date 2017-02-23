@@ -11,10 +11,22 @@ import Coastline
 
 public extension String {
 	static func mixParameters(_ params:[String:Any]) -> String {
-		return params.reduce("") { $0+$1.0+"="+"\($1.1)".urlString!+"&" }
+		return params.reduce("") {
+			if let mix = "\($1.1)".urlString {
+				return $0+$1.0+"="+mix+"&"
+			} else {
+				return $0
+			}
+		}
 	}
 	
 	func genUrl(_ params:[String:String]) -> String {
-		return params.reduce(self+"?") { $0+$1.0+"="+$1.1.urlString!+"&" }
+		return params.reduce(self+"?") {
+			if let mix = $1.1.urlString {
+				return $0+$1.0+"="+mix+"&"
+			} else {
+				return $0
+			}
+		}
 	}
 }
