@@ -15,8 +15,15 @@ public struct LZRequest {
 
 public extension LZRequest {
 	func array(_ response:@escaping ([Any]?)->Void) {
-		self.session.dataTask(with: request) { (data, resp, error) in
+		let url = request.url?.absoluteString ?? "[unknown]"
+		let body = request.httpBody?.string ?? "[empty]"
+		let header = request.allHTTPHeaderFields
+		self.session.dataTask(with: request) { [url, body, header] (data, resp, error) in
 			if let data = data {
+				print("\nRequest success [array]: \(resp), error: \(error), url: \(url)")
+				print("header---> ", header ?? "[empty]")
+				print("body---> ", body)
+				
 				if let json = (try? JSONSerialization.jsonObject(with: data, options: .allowFragments) ) as? [Any] {
 					OperationQueue.main.addOperation { response(json) }
 				} else {
@@ -24,7 +31,9 @@ public extension LZRequest {
 					OperationQueue.main.addOperation { response(nil) }
 				}
 			} else {
-				print("Request error [array]: \(resp)")
+				print("\nRequest error [array]: \(resp), error: \(error), url: \(url)")
+				print("header---> ", header ?? "[empty]")
+				print("body---> ", body)
 				OperationQueue.main.addOperation { response(nil) }
 			}
 		}.resume()
@@ -37,14 +46,21 @@ public extension LZRequest {
 		let header = request.allHTTPHeaderFields
 		self.session.dataTask(with: request) { [url, body, header] (data, resp, error) in
 			if let data = data {
+				print("\nRequest success [dict]: \(resp), error: \(error), url: \(url)")
+				print("header---> ", header ?? "[empty]")
+				print("body---> ", body)
+				
 				if let json = (try? JSONSerialization.jsonObject(with: data, options: .allowFragments) ) as? [AnyHashable:Any] {
+					if let jsonData = try? JSONSerialization.data(withJSONObject: json, options: JSONSerialization.WritingOptions.prettyPrinted) {
+						print("json--->", jsonData.string ?? "[unknown]")
+					}
 					OperationQueue.main.addOperation { response(json) }
 				} else {
 					print("Json array parser error: \(data)")
 					OperationQueue.main.addOperation { response(nil) }
 				}
 			} else {
-				print("Request error [dict]: \(resp), error: \(error), url: \(url)")
+				print("\nRequest error [dict]: \(resp), error: \(error), url: \(url)")
 				print("header---> ", header ?? "[empty]")
 				print("body---> ", body)
 				OperationQueue.main.addOperation { response(nil) }
