@@ -12,7 +12,7 @@ public class LZClient: NSObject {
 	public static var baseURL = ""
 	public static var shareHeaders:[String:String] = [:]
 	
-	static let QueryTimeOut = 10.0
+	static let QueryTimeOut = 100.0
 	
 	var session:URLSession
 	var isStaticMode:Bool = false

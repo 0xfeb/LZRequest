@@ -24,14 +24,18 @@ public extension LZRequest {
 					OperationQueue.main.addOperation { response(nil) }
 				}
 			} else {
-				print("Request error: \(resp)")
+				print("Request error [array]: \(resp)")
 				OperationQueue.main.addOperation { response(nil) }
 			}
 		}.resume()
 	}
 	
 	func dictionary(_ response:@escaping ([AnyHashable:Any]?)->Void) {
-		self.session.dataTask(with: request) { (data, resp, error) in
+		print("req-->", request.url?.absoluteString ?? "[unknown]")
+		let url = request.url?.absoluteString ?? "[unknown]"
+		let body = request.httpBody?.string ?? "[empty]"
+		let header = request.allHTTPHeaderFields
+		self.session.dataTask(with: request) { [url, body, header] (data, resp, error) in
 			if let data = data {
 				if let json = (try? JSONSerialization.jsonObject(with: data, options: .allowFragments) ) as? [AnyHashable:Any] {
 					OperationQueue.main.addOperation { response(json) }
@@ -40,7 +44,9 @@ public extension LZRequest {
 					OperationQueue.main.addOperation { response(nil) }
 				}
 			} else {
-				print("Request error: \(resp)")
+				print("Request error [dict]: \(resp), error: \(error), url: \(url)")
+				print("header---> ", header ?? "[empty]")
+				print("body---> ", body)
 				OperationQueue.main.addOperation { response(nil) }
 			}
 			}.resume()
@@ -56,7 +62,7 @@ public extension LZRequest {
 					OperationQueue.main.addOperation { response(nil) }
 				}
 			} else {
-				print("Request error: \(resp)")
+				print("Request error [string]: \(resp)")
 				OperationQueue.main.addOperation { response(nil) }
 			}
 			}.resume()
@@ -67,7 +73,7 @@ public extension LZRequest {
 			if let data = data {
 				OperationQueue.main.addOperation { response(data) }
 			} else {
-				print("Request error: \(resp)")
+				print("Request error [data]: \(resp)")
 				OperationQueue.main.addOperation { response(nil) }
 			}
 			}.resume()
