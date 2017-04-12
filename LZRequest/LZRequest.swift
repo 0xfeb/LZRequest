@@ -20,7 +20,7 @@ public extension LZRequest {
 		let header = request.allHTTPHeaderFields
 		self.session.dataTask(with: request) { [url, body, header] (data, resp, error) in
 			if let data = data {
-				print("\nRequest success [array]: \(resp), error: \(error), url: \(url)")
+				print("\nRequest success [array]: \(String(describing: resp)), error: \(String(describing: error)), url: \(url)")
 				print("header---> ", header ?? "[empty]")
 				print("body---> ", body)
 				
@@ -31,7 +31,7 @@ public extension LZRequest {
 					OperationQueue.main.addOperation { response(nil) }
 				}
 			} else {
-				print("\nRequest error [array]: \(resp), error: \(error), url: \(url)")
+				print("\nRequest error [array]: \(String(describing: resp)), error: \(String(describing: error)), url: \(url)")
 				print("header---> ", header ?? "[empty]")
 				print("body---> ", body)
 				OperationQueue.main.addOperation { response(nil) }
@@ -46,7 +46,7 @@ public extension LZRequest {
 		let header = request.allHTTPHeaderFields
 		self.session.dataTask(with: request) { [url, body, header] (data, resp, error) in
 			if let data = data {
-				print("\nRequest success [dict]: \(resp), error: \(error), url: \(url)")
+				print("\nRequest success [dict]: \(String(describing: resp)), error: \(String(describing: error)), url: \(url)")
 				print("header---> ", header ?? "[empty]")
 				print("body---> ", body)
 				
@@ -60,7 +60,7 @@ public extension LZRequest {
 					OperationQueue.main.addOperation { response(nil) }
 				}
 			} else {
-				print("\nRequest error [dict]: \(resp), error: \(error), url: \(url)")
+				print("\nRequest error [dict]: \(String(describing: resp)), error: \(String(describing: error)), url: \(url)")
 				print("header---> ", header ?? "[empty]")
 				print("body---> ", body)
 				OperationQueue.main.addOperation { response(nil) }
@@ -71,14 +71,14 @@ public extension LZRequest {
 	func string(_ response:@escaping (String?)->Void) {
 		self.session.dataTask(with: request) { (data, resp, error) in
 			if let data = data {
-				if let text = NSString(data: data, encoding: String.Encoding.utf8.rawValue) as? String {
+				if let text = String(data: data, encoding: String.Encoding.utf8) {
 					OperationQueue.main.addOperation { response(text) }
 				} else {
 					print("String parse error: \(data)")
 					OperationQueue.main.addOperation { response(nil) }
 				}
 			} else {
-				print("Request error [string]: \(resp)")
+				print("Request error [string]: \(String(describing: resp))")
 				OperationQueue.main.addOperation { response(nil) }
 			}
 			}.resume()
@@ -89,7 +89,7 @@ public extension LZRequest {
 			if let data = data {
 				OperationQueue.main.addOperation { response(data) }
 			} else {
-				print("Request error [data]: \(resp)")
+				print("Request error [data]: \(String(describing: resp))")
 				OperationQueue.main.addOperation { response(nil) }
 			}
 			}.resume()
