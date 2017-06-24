@@ -25,16 +25,16 @@ public extension LZRequest {
 				print("body---> ", body)
 				
 				if let json = (try? JSONSerialization.jsonObject(with: data, options: .allowFragments) ) as? [Any] {
-					OperationQueue.main.addOperation { response(json) }
+					 response(json)
 				} else {
 					print("Json array parser error: \(data)")
-					OperationQueue.main.addOperation { response(nil) }
+					 response(nil)
 				}
 			} else {
 				print("\nRequest error [array]: \(String(describing: resp)), error: \(String(describing: error)), url: \(url)")
 				print("header---> ", header ?? "[empty]")
 				print("body---> ", body)
-				OperationQueue.main.addOperation { response(nil) }
+				 response(nil)
 			}
 		}.resume()
 	}
@@ -54,16 +54,16 @@ public extension LZRequest {
 					if let jsonData = try? JSONSerialization.data(withJSONObject: json, options: JSONSerialization.WritingOptions.prettyPrinted) {
 						print("json--->", jsonData.string ?? "[unknown]")
 					}
-					OperationQueue.main.addOperation { response(json) }
+					response(json)
 				} else {
 					print("Json array parser error: \(data)")
-					OperationQueue.main.addOperation { response(nil) }
+					response(nil)
 				}
 			} else {
 				print("\nRequest error [dict]: \(String(describing: resp)), error: \(String(describing: error)), url: \(url)")
 				print("header---> ", header ?? "[empty]")
 				print("body---> ", body)
-				OperationQueue.main.addOperation { response(nil) }
+				 response(nil)
 			}
 			}.resume()
 	}
@@ -72,14 +72,14 @@ public extension LZRequest {
 		self.session.dataTask(with: request) { (data, resp, error) in
 			if let data = data {
 				if let text = String(data: data, encoding: String.Encoding.utf8) {
-					OperationQueue.main.addOperation { response(text) }
+					 response(text)
 				} else {
 					print("String parse error: \(data)")
-					OperationQueue.main.addOperation { response(nil) }
+					 response(nil)
 				}
 			} else {
 				print("Request error [string]: \(String(describing: resp))")
-				OperationQueue.main.addOperation { response(nil) }
+				 response(nil)
 			}
 			}.resume()
 	}
@@ -87,10 +87,10 @@ public extension LZRequest {
 	func data(_ response:@escaping (Data?)->Void) {
 		self.session.dataTask(with: request) { (data, resp, error) in
 			if let data = data {
-				OperationQueue.main.addOperation { response(data) }
+				 response(data)
 			} else {
 				print("Request error [data]: \(String(describing: resp))")
-				OperationQueue.main.addOperation { response(nil) }
+				 response(nil)
 			}
 			}.resume()
 	}

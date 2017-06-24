@@ -14,14 +14,14 @@ public extension LZRequest {
 		data { (data) in
 			if let data = data {
 				if let image = UIImage(data: data) {
-					OperationQueue.main.addOperation { response(image) }
+					response(image)
 				} else {
 					print("Image parse error: \(data)")
-					OperationQueue.main.addOperation { response(nil) }
+					 response(nil)
 				}
 			} else {
 				print("Request error")
-				OperationQueue.main.addOperation { response(nil) }
+				 response(nil) 
 			}
 		}
 	}

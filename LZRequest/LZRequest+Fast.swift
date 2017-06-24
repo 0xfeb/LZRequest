@@ -49,23 +49,23 @@ public extension LZRequest {
 					let error = dict[LZRequest.dataParts.error] as? String
 					let data = dict[LZRequest.dataParts.data]
 					if let data = data as? [Any] {
-						OperationQueue.main.addOperation { response(DataParts.list(code: code, error: error, data: data)) }
+						response(DataParts.list(code: code, error: error, data: data))
 					} else if let data = data as? [AnyHashable:Any] {
-						OperationQueue.main.addOperation { response(DataParts.dictionary(code: code, error: error, data: data)) }
+						response(DataParts.dictionary(code: code, error: error, data: data))
 					} else if let data = data as? String {
-						OperationQueue.main.addOperation { response(DataParts.string(code: code, error: error, data: data)) }
+						 response(DataParts.string(code: code, error: error, data: data))
 					} else if let data = data as? Int {
-						OperationQueue.main.addOperation { response(DataParts.integer(code: code, error: error, data: data)) }
+						 response(DataParts.integer(code: code, error: error, data: data))
 					} else {
-						OperationQueue.main.addOperation { response(DataParts.empty(code: code, error: error)) }
+						 response(DataParts.empty(code: code, error: error))
 					}
 				} else {
 					print("Dictionary parser error:\(dict)")
-					OperationQueue.main.addOperation { response(nil) }
+					response(nil)
 				}
 			} else {
 				print("Request error")
-				OperationQueue.main.addOperation { response(nil) }
+				response(nil) 
 			}
 		}
 	}
