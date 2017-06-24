@@ -24,6 +24,7 @@
 /* Begin PBXFileReference section */
 		343378FC0D62C43A59A7186C /* Pods_LZRequest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LZRequest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D108419B97635DDF0D9EF0B /* Pods-LZRequest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LZRequest.release.xcconfig"; path = "Pods/Target Support Files/Pods-LZRequest/Pods-LZRequest.release.xcconfig"; sourceTree = "<group>"; };
+		6C1243DC1EFE5ABC007D864A /* LZRequest.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = LZRequest.podspec; sourceTree = "<group>"; };
 		6C1B4BCF1E13F72800CF76C8 /* Coastline.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Coastline.framework; path = "../../../../Users/wangyuanou/Library/Developer/Xcode/DerivedData/VPNGo-hgahlguwyayxxoajxlpvvnhoaeyu/Build/Products/Debug-iphoneos/Coastline.framework"; sourceTree = "<group>"; };
 		6C3521631DB9C554008FCBC3 /* LZRequest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LZRequest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C3521661DB9C555008FCBC3 /* LZRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZRequest.h; sourceTree = "<group>"; };
@@ -74,6 +75,7 @@
 		6C3521591DB9C554008FCBC3 = {
 			isa = PBXGroup;
 			children = (
+				6C1243DC1EFE5ABC007D864A /* LZRequest.podspec */,
 				6C3521651DB9C554008FCBC3 /* LZRequest */,
 				6C3521641DB9C554008FCBC3 /* Products */,
 				6C1B4BCE1E13F72700CF76C8 /* Frameworks */,

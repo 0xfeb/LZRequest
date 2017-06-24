@@ -39,9 +39,10 @@ extension NSMutableData {
 			+ "\nContent-Type:application/octet-stream"
 			+ "\nContent-Transfer-Encoding:binary\n\n"
 		
-		if let data = (leadString as NSString).data(using: String.Encoding.utf8.rawValue) {
-			self.append(data)
+		if let lead = (leadString as NSString).data(using: String.Encoding.utf8.rawValue) {
+			self.append(lead)
 		}
+		self.append(data)
 	}
 	
 	func closeBoundry(_ boundry:String) {
