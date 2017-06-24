@@ -49,7 +49,13 @@ public extension URLSession {
 			case .part:
 				return Data.setting {
 					let param = $0
-					content.forEach{ _ = param.set($0.0, value: "\($0.1)") }
+					content.forEach{
+						if let d = $0.1 as? Data {
+							_ = param.set($0.0, data: d )
+						} else {
+							_ = param.set($0.0, value: "\($0.1)")
+						}
+					}
 				}
 			}
 		}

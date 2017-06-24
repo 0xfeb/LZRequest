@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0057266118ACEBD0D836E7A2 /* Pods_LZRequest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 343378FC0D62C43A59A7186C /* Pods_LZRequest.framework */; };
 		6C1B4BD01E13F72800CF76C8 /* Coastline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C1B4BCF1E13F72800CF76C8 /* Coastline.framework */; };
 		6C3521681DB9C555008FCBC3 /* LZRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C3521661DB9C555008FCBC3 /* LZRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6C35216F1DB9C5B8008FCBC3 /* Session+Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C35216E1DB9C5B8008FCBC3 /* Session+Request.swift */; };
@@ -21,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		343378FC0D62C43A59A7186C /* Pods_LZRequest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LZRequest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D108419B97635DDF0D9EF0B /* Pods-LZRequest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LZRequest.release.xcconfig"; path = "Pods/Target Support Files/Pods-LZRequest/Pods-LZRequest.release.xcconfig"; sourceTree = "<group>"; };
 		6C1B4BCF1E13F72800CF76C8 /* Coastline.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Coastline.framework; path = "../../../../Users/wangyuanou/Library/Developer/Xcode/DerivedData/VPNGo-hgahlguwyayxxoajxlpvvnhoaeyu/Build/Products/Debug-iphoneos/Coastline.framework"; sourceTree = "<group>"; };
 		6C3521631DB9C554008FCBC3 /* LZRequest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LZRequest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C3521661DB9C555008FCBC3 /* LZRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZRequest.h; sourceTree = "<group>"; };
@@ -34,6 +37,7 @@
 		6C35217A1DB9E2D7008FCBC3 /* Data+Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Request.swift"; sourceTree = "<group>"; };
 		6C35217C1DB9E423008FCBC3 /* LZClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LZClient.swift; sourceTree = "<group>"; };
 		6C7958631E35F317002BEB9C /* DualFetch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DualFetch.swift; sourceTree = "<group>"; };
+		B8DA2F4F961E7A9AC84AD394 /* Pods-LZRequest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LZRequest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LZRequest/Pods-LZRequest.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,16 +46,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C1B4BD01E13F72800CF76C8 /* Coastline.framework in Frameworks */,
+				0057266118ACEBD0D836E7A2 /* Pods_LZRequest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		682C1ECFECF0A02C9D5FAEC6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B8DA2F4F961E7A9AC84AD394 /* Pods-LZRequest.debug.xcconfig */,
+				4D108419B97635DDF0D9EF0B /* Pods-LZRequest.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		6C1B4BCE1E13F72700CF76C8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				6C1B4BCF1E13F72800CF76C8 /* Coastline.framework */,
+				343378FC0D62C43A59A7186C /* Pods_LZRequest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -62,6 +77,7 @@
 				6C3521651DB9C554008FCBC3 /* LZRequest */,
 				6C3521641DB9C554008FCBC3 /* Products */,
 				6C1B4BCE1E13F72700CF76C8 /* Frameworks */,
+				682C1ECFECF0A02C9D5FAEC6 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,10 +125,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6C35216B1DB9C555008FCBC3 /* Build configuration list for PBXNativeTarget "LZRequest" */;
 			buildPhases = (
+				ADD805468C282E367864BD8F /* [CP] Check Pods Manifest.lock */,
 				6C35215E1DB9C554008FCBC3 /* Sources */,
 				6C35215F1DB9C554008FCBC3 /* Frameworks */,
 				6C3521601DB9C554008FCBC3 /* Headers */,
 				6C3521611DB9C554008FCBC3 /* Resources */,
+				E70F4C6A41F07B67702642BD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -166,6 +184,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		ADD805468C282E367864BD8F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E70F4C6A41F07B67702642BD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LZRequest/Pods-LZRequest-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6C35215E1DB9C554008FCBC3 /* Sources */ = {
@@ -290,6 +341,7 @@
 		};
 		6C35216C1DB9C555008FCBC3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8DA2F4F961E7A9AC84AD394 /* Pods-LZRequest.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -300,7 +352,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = LZRequest/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lez.lzrequest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -312,6 +364,7 @@
 		};
 		6C35216D1DB9C555008FCBC3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4D108419B97635DDF0D9EF0B /* Pods-LZRequest.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -322,7 +375,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = LZRequest/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lez.lzrequest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
